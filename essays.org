@@ -1,0 +1,45 @@
+* The one about Haskell and feeling clever
+
+This morning I read the blog from David MacIver that was explicitly shared
+to annoy me: https://www.drmaciver.com/2015/04/on-haskell-ruby-and-cards-against-humanity/
+It didn't. The thing is, I do agree that one of the drawbacks of haskell is,
+that it makes you feel more clever than you are, but I also thig this is one of it's greatest strengths.
+
+Let me explain.
+
+When I work in Python or Nodejs, on any more complex project, I often only know how well I something wrote,
+after I run the code. I know lints exist, but they are limited. I know I could do test-driven development,
+but I have been doing QA engineering for several years, and writing tests is as much of programming as any other,
+and it takes time and is kinda hard to get right.
+
+With Haskell I have the type-system to nag me every step of the way. It gives me focus. Any time I didn't know what to do
+next I could just run the compiler. Sometimes it wasn't helpful, but it still was more useful than ~90% of languages I used
+so far.
+
+And I am one of those people that starts even his C projects by compiling the empty file, so that I receive the error
+suggesting I put a main function in there first.
+
+You will spend those weird little problems, that over-architecture with meaningfully complex type-system brings with it,
+like "Json parser and http library use subtly different error handling, how do I make it less painful",
+where in other languages you'd surround it with exception catching block and be done with it.
+
+On one hand annoying, on the other it is nice I know the subtle difference between parse error and response won't catch me off guard,
+and most importantly, my focus at the task at hand was trhough the roof?
+
+It can be so inefficient sometimes, but I remember I attempted to prove a point and spent so much time in complete focus and in the end I knew it worked.
+
+main = launchAff_ do
+    rs <- for ["utc", "est", "cst", "pst", "cet"] $
+        \x -> AX.get ResponseFormat.string ("http://worldclockapi.com/api/json/"<>x<>"/now")
+    for (filterMap hush rs) (_.body >>> readJSON >>> (traverse (\(r :: { currentDateTime :: _ }) -> log r.currentDateTime )))
+
+I suspect this is one of the reasons I liked to work with Java. Exceptions were checked.
+Types were strong enough (definitely more useful than the C variety or even Object Pascal I encountered previously.)
+And there isn't as much of difference talking with friend about abusing visitor-pattern to create our graphing calculator,
+than thinking about abusing free-monad-based interpretter for ... ehm, the exact same thing? I had a thing for ploting charts
+ in my 20ies, ok? :D
+
+ There are limits to this, of course. In larger projects the frustration can be more than the enefit of increased focus,
+ and in the end you will need to run the damn thing anyway. I suspect this is the reason why I enjou *using* dhall language so much
+ (a json alternative, that supports total functions and is *very* haskell inspired), but I have not prevailed in my attempts to submit improvements to the
+ tooling around it (~ 10k loc written in haskell?) so far.
