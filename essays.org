@@ -43,3 +43,28 @@ than thinking about abusing free-monad-based interpretter for ... ehm, the exact
  and in the end you will need to run the damn thing anyway. I suspect this is the reason why I enjou *using* dhall language so much
  (a json alternative, that supports total functions and is *very* haskell inspired), but I have not prevailed in my attempts to submit improvements to the
  tooling around it (~ 10k loc written in haskell?) so far.
+
+* The one about record an variant types
+
+So, Ocaml has the record and variant type, where you can expect just certain set o keys that could be comming your way,
+in your function, and if you supply more (in case of the record) or less (in case of variant), nobody cares.
+
+Purescript goes two steps urther, with the ability of creating unctions that can say things like
+'If you give me record containing name and surname, I return the entirety of the original record, with new field containing the full name',
+and even 'so, you cary the list of possible exceptions in the type o this function, you can supply a catch to remove one of them'.
+
+In addition, it provides a way to use typeclasses to programatically operate on keys of these records, enabling the wonderful libraries like simple-json.
+
+My idea would be, maybe you could unify these into single construct? Would it have been too powerful?
+
+{name: str, surname:str | r} + ({middlename |r} | {|r})
+
+* The one about type-level strings
+
+This was another small feature I noticed in PureScript. You can have typeclass instances match on parts of the string.
+Seems to produce a small kleene-algebra, so nothing too complex, and I have seen i.e. type-sae printf implemented with it.
+
+Question is, how would you do that in other languages? Dhall could be very interesting. It is a coniguration language,
+but it still deals with strings quite a lot. I would love to be able to say things like:
+** In this declaration, all names have name of the project as the prefix
+**
