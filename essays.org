@@ -68,3 +68,18 @@ Question is, how would you do that in other languages? Dhall could be very inter
 but it still deals with strings quite a lot. I would love to be able to say things like:
 ** In this declaration, all names have name of the project as the prefix
 **
+
+* The economics discussions are weird?
+
+Like there is interesting tension between the stories we tell ourselves about how world works.
+I see more and more people claiming that billionaires shouldn't exist. And they probaly shouldn't?
+But can you meaningfully prevent their emergence without constraining function of the rest of society?
+
+I think I should read more from John C Scott ... or was it James? Need to doublecheck.
+The Two cheers for Anarchism guy. The Seeing like a state and against the grain.
+There is an argument of legibility. That you, as a state, want to be able to see what is happening,
+so that you can more efficiently tax it. Actually is there a meaningful difference between
+Nation state, a landlord and i.e. google, apple or amazon?
+
+Every single one of them is proffiting from allowing access to its space. e it literal states land,
+or like a place in a store.
